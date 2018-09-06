@@ -1,0 +1,30 @@
+page-login {
+  .ios, .md {
+
+    page-home {
+
+        .scroll-content {
+            background-color: map-get($colors, light);
+        }
+
+        ion-card-header {
+            font-weight: bold;
+        }
+
+    }
+
+  }
+
+  .vertical-align-content > *
+    {
+         display: flex!important;
+         align-content: center!important;
+         align-items: center!important;
+    }
+
+  .card, .card-md, .card-ios {
+      webkit-box-shadow: none;
+      box-shadow: none;
+  }
+
+}

@@ -1,0 +1,50 @@
+<ion-header>
+
+  <!-- <ion-navbar color="alvaOrange" text-center>
+    <ion-title></ion-title>
+  </ion-navbar> -->
+
+</ion-header>
+
+
+<ion-content text-center class="vertical-align-content">
+  <ion-grid>
+      <ion-row>
+            <!-- <ion-col>
+                  <h1 text-uppercase no-padding no-margin>Wellcome</h1>
+                  <horizontalrule></horizontalrule>
+                  <h3 no-padding no-margin>Username</h3>
+            </ion-col> -->
+            <ion-card>
+              <img src="../../assets/imgs/alva-logo.jpg">
+            </ion-card>
+      </ion-row>
+
+      <ion-row>
+        <ion-card>
+          <!-- <ion-card-header text-center>
+            <h1>Login</h1>
+          </ion-card-header> -->
+
+          <form (ngSubmit)="login()" [formGroup]="loginForm">
+            <ion-list inset>
+              <ion-item>
+                <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+              </ion-item>
+            </ion-list>
+
+            <div class="form-error">{{ loginError }}</div>
+
+            <button ion-button full type="submit">Login</button>
+
+          </form>
+        </ion-card>
+      </ion-row>
+  </ion-grid>
+
+
+
+</ion-content>

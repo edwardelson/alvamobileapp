@@ -1,0 +1,83 @@
+1. to create
+ng new simple-dashboard
+
+2. to run
+ng serve --open
+
+3. to create component
+ng generate component x
+
+4. to create service
+ng generate service x
+
+5. to create routing module
+ng generate module app-routing --flat --module=app
+
+/*** ===== */
+
+1. message service
+ng generate service message
+
+/* display messages in admin */
+create object to be shared in message.service.ts
+inject messageService to admin.component.ts
+to display use ngFor
+
+/* input messages in contact */
+in message.service.ts create add(message: string) function
+inject messageService to contact.component.ts
+create placeholder message variable in contact.component.ts with @Input decorator
+  contact.component.html can alter this variable with @ngModel 2-binding
+  with button click, call add() function to update messageService with the newest data
+import FormsModule in app.module.ts to use ngModule 2-way binding
+
+2. routing with url
+
+/** setup router */
+in app-routing.module.ts:
+  - import other components
+  - put RouterModule.forRoot() and RouterModule in @ngModule imports and exports
+  - create const routes (consist of {path:, component:})
+    -> for '', use redirect and full
+
+/** change html view */
+call <router-outlet> or sth in app-html
+  - add routerLink for url
+
+3. http call
+/** create weather service */
+ng generate service weather
+
+/** setup HTTP access in this service */
+GET from https://api.openaq.org/v1/latest?parameter=pm25&city=Flanders&location=40AB01%20-%20ANTWERPEN
+
+import HttpClient and HttpHeaders modules
+import Observable from 'rxjs'
+create new HttpHeaders() in httpOptions
+hardcode url in variable
+constructor takes in HttpClient
+return this.http.get<>(url)
+  .pipe(log(optional), catchError) -> type Observable
+define catchError
+
+/** Handling error */
+handleError<T>(operation='operation', result?: T) {
+  return (error: any): Observable<T> => {
+    console.error(error);
+    this.log(`${operation} failed: ${error.message}`);
+
+    return of(result as T);
+  }
+}
+
+/** app.module.ts */ -> make HttpClientModule available everywhere
+import HttpClientModule from @angular/common/http
+
+/** return type observables, of -> caller needs to be aware*/
+// inject WeatherService to home.component.ts
+this.subscribe, update value inside it
+
+4. make weather service return object (not just string)
+
+5. angular-material
+https://medium.com/@ismapro/first-steps-with-angular-cli-and-angular-material-5a90406e9a4
