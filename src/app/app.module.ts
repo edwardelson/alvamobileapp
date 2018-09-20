@@ -5,6 +5,8 @@ import { MyApp } from './app.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { firebaseConfig } from '../config';
 
 import { AboutPage } from '../pages/about/about';
@@ -17,6 +19,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PeopleServiceProvider } from '../providers/people-service/people-service';
 import { AuthenticationProvider } from '../providers/auth/auth';
+import { DatabaseProvider } from '../providers/database/database';
 
 
 @NgModule({
@@ -48,7 +51,9 @@ import { AuthenticationProvider } from '../providers/auth/auth';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PeopleServiceProvider,
     AngularFireAuth,
-    AuthenticationProvider
+    AuthenticationProvider,
+    DatabaseProvider,
+    AngularFireDatabase
   ]
 })
 export class AppModule {}

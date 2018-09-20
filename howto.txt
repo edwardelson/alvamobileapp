@@ -1,3 +1,39 @@
+Firebase
+
+1. set auth state persistence
+https://firebase.google.com/docs/auth/web/auth-state-persistence
+
+2. use Subject to update data, so that updates in service variable could be
+broad-casted to all subscribers
+https://stackoverflow.com/questions/43159090/how-can-i-detect-service-variable-change-when-updated-from-another-component/43161506
+https://blog.angularindepth.com/rxjs-understanding-subjects-5c585188c3e1
+
+(all database related access is moved to DatabaseProvider, including subscription to AuthProvider)
+
+# upgrade rxjs to fix issues with angularfire2
+npm i rxjs@^6.0 rxjs-compat
+
+
+3. need to inject data to database.ts
+- get this month's data
+- prepare DatabaseProvider service
+
+
+
+need to figure out how to make sure parse json when received, so that home.ts no longer deals with that
+maybe use Subject?
+
+
+
+
+
+
+
+
+
+=============================
+
+
 1. to create
 ng new simple-dashboard
 

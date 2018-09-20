@@ -23,9 +23,23 @@ export class AuthenticationProvider {
 
   signInWithEmail(credentials) {
     console.log('Sign in with email');
+
+    // to prevent user from being kept logged in even after application is close
+    this.afAuth.auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .then(function() {
+        console.log("persistence set to session only")
+      })
+      .catch(function(error) {
+        console.log(error.message);
+      })
+
     return this.afAuth.auth.signInWithEmailAndPassword(
       credentials.email, credentials.password
     );
+  }
+
+  get authenticated(): boolean {
+    return this.user !== null;
   }
 
 }

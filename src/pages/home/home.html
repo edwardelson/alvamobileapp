@@ -7,9 +7,19 @@
 <ion-content padding>
   <!-- <ion-card>
     <ion-card-header text-center>
-      Welcome Home
+      <ul>
+        <li *ngFor="let todo of (data$ | async)" [class.done]="todo.done">
+          {{ todo.content }}
+        </li>
+      </ul>
     </ion-card-header>
   </ion-card> -->
+
+  <ion-card>
+    <ion-card-header text-center>
+      <h1> Welcome Home, {{ userName }}! </h1>
+    </ion-card-header>
+  </ion-card>
   <ion-card>
     <ion-card-header text-center>
       Plant
